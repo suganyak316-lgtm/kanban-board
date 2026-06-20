@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop Kanban Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Drag & Drop Kanban Board</h1>
+    </header>
+
+    <!-- Search and Filters -->
+    <section class="toolbar">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search cards..."
+        >
+
+        <div class="filters">
+            <button class="filter-btn active" data-priority="All">All</button>
+            <button class="filter-btn" data-priority="P1">P1</button>
+            <button class="filter-btn" data-priority="P2">P2</button>
+            <button class="filter-btn" data-priority="P3">P3</button>
+            <button class="filter-btn" data-priority="P4">P4</button>
+        </div>
+    </section>
+
+    <!-- Kanban Board -->
+    <main class="board">
+
+        <!-- Backlog -->
+        <section class="column" data-column="backlog">
+            <div class="column-header">
+                <h2>
+                    Backlog
+                    (<span id="count-backlog">0</span>)
+                </h2>
+
+                <button
+                    class="add-card-btn"
+                    data-column="backlog">
+                    + Add Card
+                </button>
+            </div>
+
+            <div
+                class="card-list"
+                id="backlog">
+            </div>
+        </section>
+
+        <!-- To Do -->
+        <section class="column" data-column="todo">
+            <div class="column-header">
+                <h2>
+                    To Do
+                    (<span id="count-todo">0</span>)
+                </h2>
+
+                <button
+                    class="add-card-btn"
+                    data-column="todo">
+                    + Add Card
+                </button>
+            </div>
+
+            <div
+                class="card-list"
+                id="todo">
+            </div>
+        </section>
+
+        <!-- In Progress -->
+        <section class="column" data-column="inprogress">
+            <div class="column-header">
+                <h2>
+                    In Progress
+                    (<span id="count-inprogress">0</span>)
+                </h2>
+
+                <button
+                    class="add-card-btn"
+                    data-column="inprogress">
+                    + Add Card
+                </button>
+            </div>
+
+            <div
+                class="card-list"
+                id="inprogress">
+            </div>
+        </section>
+
+        <!-- Done -->
+        <section class="column done-column" data-column="done">
+            <div class="column-header">
+                <h2>
+                    Done
+                    (<span id="count-done">0</span>)
+                </h2>
+
+                <button
+                    class="add-card-btn"
+                    data-column="done">
+                    + Add Card
+                </button>
+            </div>
+
+            <div
+                class="card-list"
+                id="done">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Add Card Modal -->
+    <div id="cardModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <h3>Add New Card</h3>
+
+            <input
+                type="text"
+                id="cardTitle"
+                placeholder="Enter title"
+            >
+
+            <textarea
+                id="cardDescription"
+                placeholder="Enter description"
+            ></textarea>
+
+            <select id="cardPriority">
+                <option value="P1">P1 - High</option>
+                <option value="P2">P2 - Medium</option>
+                <option value="P3">P3 - Normal</option>
+                <option value="P4">P4 - Low</option>
+            </select>
+
+            <div class="modal-buttons">
+                <button id="saveCardBtn">
+                    Create
+                </button>
+
+                <button id="cancelCardBtn">
+                    Cancel
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Keyboard Context Menu -->
+    <div id="contextMenu" class="context-menu hidden">
+
+        <button id="moveNextBtn">
+            Move To Next Column
+        </button>
+
+        <button id="deleteCardBtn">
+            Delete Card
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
